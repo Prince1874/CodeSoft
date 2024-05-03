@@ -50,7 +50,8 @@ class Random{
 		int rand = (int)(Math.random() * range) + min;
         
         if(rand == guess){
-
+ 
+ 
              System.out.println("Right Guess..!!"); 
              System.out.println("Your Guess: " + guess);    
              System.out.println("Random Number: " + rand);                    
@@ -58,7 +59,7 @@ class Random{
         }
         else{
            
-             System.out.println("OFFO Wrong Guess..!!"); 
+             System.out.println("OFFO Wrong Guess...!!"); 
              System.out.println("Your Guess: " + guess);  
         }
 	
