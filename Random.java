@@ -76,6 +76,6 @@ class Random{
 
     }
     public void Score(){
-
+            System.out.println("New Change");
     }
 }
