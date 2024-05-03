@@ -26,7 +26,7 @@ class Random{
        switch(choice){
 
          case 1: 
-            Start();
+            GenerateRandom();
             break;
          case 2:
             Score();
@@ -42,39 +42,47 @@ class Random{
 
     }
 
-	public void GenerateRandom(int guess)
+	public void GenerateRandom()
 	{
-		int max = 100;
+		int max = 3;
 		int min = 1;
 		int range = max - min + 1;
 		int rand = (int)(Math.random() * range) + min;
-        
-        if(rand == guess){
- 
- 
-             System.out.println("Right Guess..!!"); 
-             System.out.println("Your Guess: " + guess);    
-             System.out.println("Random Number: " + rand);                    
 
-        }
-        else{
-           
-             System.out.println("OFFO Wrong Guess...!!"); 
-             System.out.println("Your Guess: " + guess);  
-        }
+        Scanner sc = new Scanner(System.in);
+         int count=1;
+         int guess=0;
+         while(count<=3){
+                System.out.print("\n\nEnter Your Guess: ");
+                guess = sc.nextInt();
+            
+                if(rand == guess){
+        
+                    System.out.println("Right Guess..!!"); 
+                    System.out.println("Your Guess: " + guess);    
+                    System.out.println("Random Number: " + rand); 
+                    break;                   
+
+                }
+                else{
+                
+                    System.out.println("OFFO Wrong Guess...!!"); 
+                    System.out.println("Your Guess: " + guess);  
+                    System.out.println("\nTry again...!!");  
+                    count++;
+                }
+
+        
+         }
+         System.out.println("OFFO Wrong Guess...!!"); 
+         System.out.println("Your Guess: " + guess);  
+         System.out.println("Random Number: " + rand);   
+         System.out.println("\n\n");
+         Menu();   
+
 	
 	}
 
-    public void Start(){
-        
-        Scanner sc = new Scanner(System.in);
-        Random ran = new Random();
-
-        System.out.print("Enter Your Guess: ");
-        int guess = sc.nextInt();
-        ran.GenerateRandom(guess);
-
-    }
     public void Score(){
             System.out.println("New Change");
     }
