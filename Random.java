@@ -79,7 +79,7 @@ class Random{
                     
                     if(guess<rand){
                         int low=rand-guess;
-                        if(low<5){
+                        if(low>5){
                             System.out .println("Too Low..!");
                         }
                         else{
@@ -98,8 +98,8 @@ class Random{
 
         
          }
-         Clear(); 
-         System.out.println("Random Number: " + rand);   
+         Clear();
+          System.out.println("Random Number: " + rand); 
          System.out.println("\n\n");
          Template();
          Menu();   
