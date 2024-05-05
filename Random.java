@@ -5,23 +5,22 @@ import java.util.Scanner;
 class Random{
     
     static String BrightRed = "\u001b[31;1m";
+    static String Yellow = "\u001b[33m";  
+    static String Green = "\u001b[32m";
     static String BrightWhite = "\u001b[37;1m";
     static String BrightMagenta = "\u001b[35;1m";
-    static String Reset = "\u001b[0m";
-
-     public static void Clear(){
-         System.out.print("\033c");
-    }
-    
+    static String Reset = "\u001b[0m";    
 
 
-    public  void Template(){
+    public  void Template(int score){
 
             System.out.println(BrightMagenta + "\n\n\t\t---------------WELCOME TO RANDOM GAME---------------" + Reset);
             System.out.println(BrightRed + "\n\n\nRules of the Game:" + Reset);
             System.out.println(BrightWhite + "\t1.Guess a Number in range 1 To 100.");
             System.out.println("\t2.You have 3 life to guess correct answer.");
             System.out.println("\t3.Each right guess Award's you with a point\n\n" + Reset);
+            System.out.println("\t\t\t\t\t\t\tYour Score: " + score);
+
             Random r = new Random();
             r.Menu();
     }
@@ -29,7 +28,7 @@ class Random{
    public void Menu(){
        
        Scanner sc = new Scanner(System.in);
-       System.out.print("\n\n1.Start Game\n2.Check Curruent Points\n3.Exit");
+       System.out.print("\n\n1.Start Game\n2.Exit");
        System.out.print("\n\nChoose an Option: ");
        int choice = sc.nextInt();
 
@@ -39,9 +38,6 @@ class Random{
             GenerateRandom();
             break;
          case 2:
-            Score();
-            break;
-         case 3:
             System.exit(0);
             break;
          default: 
@@ -54,7 +50,8 @@ class Random{
 
 	public void GenerateRandom()
 	{
-		int max = 100;
+        int score;
+		int max = 3;
 		int min = 1;
 		int range = max - min + 1;
 		int rand = (int)(Math.random() * range) + min;
@@ -67,8 +64,8 @@ class Random{
                 guess = sc.nextInt();
             
                 if(rand == guess){
-        
-                    System.out.println("Right Guess..!!"); 
+                    score++;
+                    System.out.println(Green + "Right Guess..!!" + Reset); 
                     System.out.println("Your Guess: " + guess);    
                     System.out.println("Random Number: " + rand); 
                     break;                   
@@ -79,18 +76,18 @@ class Random{
                     
                     if(guess<rand){
                         int low=rand-guess;
-                        if(low>5){
-                            System.out .println("Too Low..!");
+                        if(low>1){
+                            System.out .println(BrightRed + "Too Low..!" + Reset);
                         }
                         else{
-                            System.out .println("So close..!");
+                            System.out .println(Yellow + "So close..!" + Reset);
                         }
                     }else if(guess>rand){
                         int high=guess-rand;
-                        if(high>5){
-                            System.out .println("Too High..!");
+                        if(high>1){
+                            System.out .println(BrightRed + "Too High..!" + Reset);
                         }else{
-                            System.out .println("So  Close.!");
+                            System.out .println(Yellow + "So  Close.!" + Reset);
                         }
                     }
                     count++;
@@ -98,16 +95,12 @@ class Random{
 
         
          }
-         Clear();
-          System.out.println("Random Number: " + rand); 
-         System.out.println("\n\n");
-         Template();
+           System.out.println("\nYour Guess: " + guess); 
+          System.out.println("Random Number: " + rand);  
+         System.out.println("\n");
+         Template(score);
          Menu();   
 
 	
 	}
-
-    public void Score(){
-            System.out.println("New Change");
-    }
 }

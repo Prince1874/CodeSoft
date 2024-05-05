@@ -8,7 +8,8 @@ class RandomGame{
 
         Scanner sc = new Scanner(System.in);
         Random rn = new Random();
-        rn.Template();
+        int score=0;
+        rn.Template(score);
         
     }
 }
